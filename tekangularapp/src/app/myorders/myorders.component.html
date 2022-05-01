@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Assistant");
+
+      body {
+        background: #eee;
+        font-family: Assistant, sans-serif;
+      }
+
+      .cell-1 {
+        border-collapse: separate;
+        border-spacing: 0 4em;
+        background: #fff;
+        border-bottom: 5px solid transparent;
+        background-clip: padding-box;
+      }
+
+      thead {
+        background: #dddcdc;
+      }
+
+      .toggle-btn {
+        width: 40px;
+        height: 21px;
+        background: grey;
+        border-radius: 50px;
+        padding: 3px;
+        cursor: pointer;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+      }
+
+      .toggle-btn > .inner-circle {
+        width: 15px;
+        height: 15px;
+        background: #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+      }
+
+      .toggle-btn.active {
+        background: blue !important;
+      }
+
+      .toggle-btn.active > .inner-circle {
+        margin-left: 19px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container m-5">
+      <div class="d-flex justify-content-center row">
+        <h1 style="text-align: center">Order History</h1>
+        <div class="col-md-10">
+          <div class="rounded">
+            <div class="table-responsive table-borderless">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-center"></th>
+                    <th>Order #</th>
+                    <th>Ship To</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Items Purchased</th>
+                    <th>Placed on</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="table-body">
+                  <tr class="cell-1" *ngFor="let orders of myorders">
+                    <td class="text-center"></td>
+                    <td>{{ orders.orderid }}</td>
+                    <td>{{ orders.name }}</td>
+                    <td *ngIf="orders.pending">
+                      <span class="badge bg-warning text-dark">Pending</span>
+                    </td>
+                    <td *ngIf="!orders.pending">
+                      <span class="badge bg-success">Completed</span>
+                    </td>
+                    <td>{{ orders.price | currency: "INR" }}</td>
+                    <td>{{ orders.cakes.length }}</td>
+                    <td>{{ orders.orderdate | date }}</td>
+                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center m-5 mb-5">
+        <button (click)="return()" routerLink="/" class="btn btn-outline-primary " type="submit" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+          Return
+        </button>  
+    </div>
+    </div>
+  </body>
+</html>

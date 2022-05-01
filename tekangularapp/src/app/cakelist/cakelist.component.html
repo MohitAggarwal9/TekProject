@@ -1,0 +1,9 @@
+<div class="container">
+    <button (click)="asecSort()" class="btn btn-light m-1">Price:Low to High</button>
+    <button (click)="descSort()" class="btn btn-light m-1">Price:High to Low</button>
+    <div class="row">
+        <app-cake *ngFor="let x of cakes" class="col" [cakedata]="x">
+            <!-- *ngIf=true <p>Best seller</p> -->
+        </app-cake>
+    </div>
+</div>

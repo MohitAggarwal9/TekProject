@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div style="width:50%; margin:auto;background-color:#f0f0f0;">
+        <div style="width:50%; margin:auto; ">
+            <form [formGroup]="signupForm"> 
+                <!-- reactive form validation -->
+                <h1>SignUp Here</h1>
+                <div *ngIf="responseError" class="form-group mt-3">
+                    <label class="alert alert-danger">{{responseError}}</label>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="">Email</label>
+                    <input formControlName="formvalid" type="text" class="form-control"> 
+                    <!-- getting values from input and storing  -->
+                </div>
+                <div class="form-group mt-3">
+                    <label for="">Name</label>
+                    <input  type="text" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="form-group mt-3 ">
+                    <button (click)="signup()" class="btn btn-primary">SignUp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <!-- <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+            <tr *ngFor="let user of users ; let i = index">
+            <td>{{user.email}}</td>
+            <td>{{user.name}}</td>
+            <td><button (click)="deleteUser(i)" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>
